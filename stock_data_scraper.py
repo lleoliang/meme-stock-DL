@@ -1,8 +1,3 @@
-"""
-BASIC Stock Data Fetcher
-Simple script to get stock data and save it
-"""
-
 import yfinance as yf
 import pandas as pd
 from datetime import datetime, timedelta
@@ -52,21 +47,17 @@ def save_to_csv(data, filename):
     data.to_csv(filename)
     print(f"Saved to {filename}")
 
-
-# =======================
-# EXAMPLE: Run this code
-# =======================
-
 if __name__ == "__main__":
-    # Get GME data for 60 days before July 1, 2025
+    # Get GME data for 60 days before November 16, 2025
     ticker = 'GME'
-    days = 7
-    end_date = '2025-07-01'
+    days = 5
+    end_date = '2025-11-16'
     
     print(f"Fetching {ticker} for {days} days before {end_date}...")
     
     data = get_stock_data(ticker, days, end_date)
     
+    # ===== Displaying the data =====
     if data is not None:
         # Show first few rows
         print("\nFirst 5 rows:")
@@ -85,5 +76,6 @@ if __name__ == "__main__":
         
         # Save it
         save_to_csv(data, f'{ticker}_data.csv')
+    # ===============================
     else:
         print("Failed to get data")
