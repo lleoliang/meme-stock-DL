@@ -2,7 +2,7 @@ import yfinance as yf
 import pandas as pd
 from datetime import datetime, timedelta
 
-def get_stock_data(ticker, days, end_date):
+def get_stock_data(ticker: str, days: int, end_date: str) -> pd.DataFrame:
     """
     Get stock data for ONE ticker
     
@@ -36,7 +36,23 @@ def get_stock_data(ticker, days, end_date):
     return data
 
 
-def save_to_csv(data, filename):
+def load_sp500_tickers(csv_path='sp500_companies.csv') -> list[str]:
+    """
+    Load S&P 500 ticker symbols from CSV
+    
+    Args:
+        csv_path: Path to CSV file with 'Symbol' column
+    
+    Returns:
+        List of ticker symbols
+    """
+    df = pd.read_csv(csv_path)
+    tickers = df['Symbol'].tolist()
+    print(f"Loaded {len(tickers)} S&P 500 tickers")
+    return tickers
+
+
+def save_to_csv(data: pd.DataFrame, filename: str) -> None:
     """
     Save data to CSV file
     
@@ -47,10 +63,62 @@ def save_to_csv(data, filename):
     data.to_csv(filename)
     print(f"Saved to {filename}")
 
+
+def get_top_gainers(tickers: list, days: int, end_date: int, top_n: int = 100) -> list[str]:
+    """
+    Get top N gainers over a period
+    
+    Args:
+        tickers: List of ticker symbols
+        days: Lookback period (14 days)
+        end_date: Reference date
+        top_n: Number of top gainers to return (100)
+    
+    Returns:
+        List of tuples: (ticker, return, data)
+    """
+    results = []
+
+    for i, ticker in enumerate(tickers):
+        if (i + 1) % 50 == 0:
+            print(f"  Progress: {i+1}/{len(tickers)}")
+
+        data = get_stock_data(ticker, days, end_date)
+        if data is None or len(data) < 2:
+            continue
+
+        # Extract first-close and last-close
+        first_close = float(data["Close"].iloc[0])
+        last_close = float(data["Close"].iloc[-1])
+
+        if first_close == 0:
+            continue  # avoid division by zero
+
+        pct_change = (last_close - first_close) / first_close
+
+        results.append((ticker, pct_change, data))
+
+    print(f"\nSuccessfully processed {len(results)} tickers")
+
+    # Sort by percent change descending
+    results.sort(key=lambda x: x[1], reverse=True)
+
+    # Slice top-N
+    top_gainers = results[:top_n]
+
+    if top_gainers:
+        best = top_gainers[0]
+        worst = top_gainers[-1]
+        print(f"\nTop {top_n} gainers:")
+        print(f"  Best: {best[0]} (+{best[1]*100:.2f}%)")
+        print(f"  Worst in top {top_n}: {worst[0]} (+{worst[1]*100:.2f}%)")
+
+    return top_gainers
+
 if __name__ == "__main__":
     # Get GME data for 60 days before November 16, 2025
     ticker = 'GME'
-    days = 5
+    days = 14
     end_date = '2025-11-16'
     
     print(f"Fetching {ticker} for {days} days before {end_date}...")
@@ -79,3 +147,7 @@ if __name__ == "__main__":
     # ===============================
     else:
         print("Failed to get data")
+
+    universe = load_sp500_tickers(csv_path='sp500_companies.csv')
+    top_100_tickers = get_top_gainers(universe, 14, "2025-11-01", 100)
+    
