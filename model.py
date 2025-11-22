@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import numpy as np
 
-
 class MemeStockModel(nn.Module):
     """
     Two-stream model: Market encoder + Social encoder + Cross-attention + Classifier
