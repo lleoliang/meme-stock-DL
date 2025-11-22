@@ -79,4 +79,5 @@ htmlcov/
 *.bak
 test_*.py
 !test_backtest.py
+test_*.txt
 
