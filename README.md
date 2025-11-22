@@ -31,30 +31,63 @@ python main.py --mode backtest   # Run backtesting
 
 ```
 meme-stock-DL/
-├── main.py                      # Main entry point
-├── config.py                    # Configuration parameters
-├── prepare_and_train.py         # Training pipeline
-├── backtest.py                  # Backtesting framework
+├── main.py                      # Main entry point (redirects to src.main)
+├── requirements.txt             # Python dependencies
+├── README.md                    # This file
 │
-├── models/
-│   ├── stream_b.py             # Stream B model architecture
-│   └── __init__.py
+├── src/                         # Source code
+│   ├── __init__.py
+│   ├── main.py                 # Main CLI entry point
+│   ├── config.py               # Configuration parameters
+│   │
+│   ├── models/                 # Model architecture
+│   │   ├── __init__.py
+│   │   └── stream_b.py         # Stream B model
+│   │
+│   ├── data/                   # Data collection & processing
+│   │   ├── __init__.py
+│   │   ├── data_collector.py
+│   │   ├── data_collector_enhanced.py
+│   │   ├── data_processor.py
+│   │   ├── historical_data_loader.py
+│   │   └── scrapers/
+│   │       ├── selenium_scraper.py
+│   │       └── stocktwits_scraper.py
+│   │
+│   ├── training/               # Training modules
+│   │   ├── __init__.py
+│   │   ├── prepare_and_train.py
+│   │   ├── train_stream_b.py
+│   │   └── losses.py
+│   │
+│   ├── backtest/               # Backtesting
+│   │   ├── __init__.py
+│   │   └── backtest.py
+│   │
+│   └── utils/                  # Utilities
+│       ├── __init__.py
+│       └── sentiment_analyzer.py
 │
-├── data/
-│   ├── raw/                    # Raw Stocktwits CSV files
-│   ├── processed/              # Processed sequences
-│   └── cache/                  # Cached API responses
+├── scripts/                     # Utility scripts
+│   ├── collect_real_data.py
+│   ├── quick_setup.py
+│   └── verify_format.py
 │
-├── results/                     # Training and backtest results
+├── tests/                       # Test files
+│   └── test_backtest.py
 │
-├── data_collector_enhanced.py  # Enhanced data collector
-├── data_processor.py           # Data preprocessing pipeline
-├── train_stream_b.py           # Training utilities
-├── losses.py                    # Loss functions
-├── sentiment_analyzer.py        # NLP sentiment analysis
-├── selenium_scraper.py         # Selenium-based scraper
+├── docs/                        # Documentation
+│   ├── DEPLOYMENT.md
+│   ├── QUICKSTART.md
+│   └── SYSTEM_CONTEXT.md
 │
-└── requirements.txt            # Python dependencies
+├── data/                        # Data files
+│   ├── raw/                    # Raw CSV files
+│   └── samples/                # Sample data
+│
+└── examples/                   # Example code
+    ├── model.py
+    └── stock_data_scraper.py
 ```
 
 ## 🎯 Features

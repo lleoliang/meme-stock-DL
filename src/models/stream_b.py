@@ -5,7 +5,7 @@ Processes Stocktwits social signals (volume, sentiment, velocity)
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from config import Config
+from src.config import Config
 
 class SocialEncoder(nn.Module):
     """

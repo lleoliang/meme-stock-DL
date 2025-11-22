@@ -12,8 +12,8 @@ import requests
 import zipfile
 import io
 
-from config import Config
-from sentiment_analyzer import SentimentAnalyzer
+from src.config import Config
+from src.utils.sentiment_analyzer import SentimentAnalyzer
 
 class HistoricalDataLoader:
     """Load historical Stocktwits data from GitHub or local files"""

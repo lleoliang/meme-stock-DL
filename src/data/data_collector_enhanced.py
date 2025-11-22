@@ -16,12 +16,12 @@ import pickle
 from pathlib import Path
 import json
 
-from config import Config
-from sentiment_analyzer import SentimentAnalyzer
+from src.config import Config
+from src.utils.sentiment_analyzer import SentimentAnalyzer
 
 # Try to import scraper as fallback
 try:
-    from stocktwits_scraper import StocktwitsScraper
+    from src.data.scrapers.stocktwits_scraper import StocktwitsScraper
     SCRAPER_AVAILABLE = True
 except ImportError:
     SCRAPER_AVAILABLE = False
@@ -279,7 +279,7 @@ class EnhancedStocktwitsCollector:
             
             # Try historical data loader
             try:
-                from historical_data_loader import HistoricalDataLoader
+                from src.data.historical_data_loader import HistoricalDataLoader
                 loader = HistoricalDataLoader()
                 hist_files = [
                     f"data/historical/{symbol}_messages.csv",

@@ -1,7 +1,10 @@
 """
 Verify if we're getting real Stocktwits data or synthetic data
 """
-from data_collector import StocktwitsCollector
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from src.data.data_collector import StocktwitsCollector
 import pandas as pd
 import os
 

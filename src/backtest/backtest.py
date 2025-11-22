@@ -10,9 +10,9 @@ import seaborn as sns
 from datetime import datetime
 import os
 
-from models.stream_b import StreamBClassifier
-from config import Config
-from data_processor import StreamBDataProcessor
+from src.models.stream_b import StreamBClassifier
+from src.config import Config
+from src.data.data_processor import StreamBDataProcessor
 import yfinance as yf
 
 class Backtester:

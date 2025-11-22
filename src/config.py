@@ -4,11 +4,11 @@ Configuration file for Stream B (Social Encoder) - Stocktwits focused
 import os
 
 class Config:
-    # Data paths
+    # Data paths (relative to project root)
     DATA_DIR = "data"
     RAW_DATA_DIR = os.path.join(DATA_DIR, "raw")
     PROCESSED_DATA_DIR = os.path.join(DATA_DIR, "processed")
-    MODELS_DIR = "models"
+    MODELS_DIR = "src/models"
     RESULTS_DIR = "results"
     
     # Stocktwits API Configuration

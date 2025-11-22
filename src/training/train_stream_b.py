@@ -13,9 +13,9 @@ from tqdm import tqdm
 import json
 from datetime import datetime
 
-from models.stream_b import StreamBClassifier
-from losses import FocalLoss, WeightedBCELoss
-from config import Config
+from src.models.stream_b import StreamBClassifier
+from src.training.losses import FocalLoss, WeightedBCELoss
+from src.config import Config
 
 class SocialDataset(Dataset):
     """Dataset for social sequences"""

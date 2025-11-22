@@ -10,15 +10,15 @@ import json
 
 # Use enhanced collector if available
 try:
-    from data_collector_enhanced import EnhancedStocktwitsCollector as StocktwitsCollector
+    from src.data.data_collector_enhanced import EnhancedStocktwitsCollector as StocktwitsCollector
 except ImportError:
-    from data_collector import StocktwitsCollector
-from data_processor import StreamBDataProcessor
-from train_stream_b import optimize_weights, StreamBTrainer, SocialDataset
-from backtest import Backtester
-from models.stream_b import StreamBClassifier
-from losses import WeightedBCELoss
-from config import Config
+    from src.data.data_collector import StocktwitsCollector
+from src.data.data_processor import StreamBDataProcessor
+from src.training.train_stream_b import optimize_weights, StreamBTrainer, SocialDataset
+from src.backtest.backtest import Backtester
+from src.models.stream_b import StreamBClassifier
+from src.training.losses import WeightedBCELoss
+from src.config import Config
 from torch.utils.data import DataLoader
 
 def main():

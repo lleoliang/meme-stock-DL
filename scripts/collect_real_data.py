@@ -4,13 +4,17 @@ Tries multiple methods to get real data
 """
 import os
 import pandas as pd
-from stocktwits_scraper import StocktwitsScraper
-from historical_data_loader import HistoricalDataLoader
-from data_collector_enhanced import EnhancedStocktwitsCollector
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from src.data.scrapers.stocktwits_scraper import StocktwitsScraper
+from src.data.historical_data_loader import HistoricalDataLoader
+from src.data.data_collector_enhanced import EnhancedStocktwitsCollector
 
 # Try to import Selenium scraper
 try:
-    from selenium_scraper import SeleniumStocktwitsScraper
+    from src.data.scrapers.selenium_scraper import SeleniumStocktwitsScraper
     SELENIUM_AVAILABLE = True
 except ImportError:
     SELENIUM_AVAILABLE = False

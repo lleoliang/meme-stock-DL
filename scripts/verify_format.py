@@ -2,8 +2,11 @@
 Verify that S_t (social sequences) are in the correct format: R^(T x d_s)
 """
 import numpy as np
-from data_processor import StreamBDataProcessor
-from config import Config
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from src.data.data_processor import StreamBDataProcessor
+from src.config import Config
 
 def verify_s_t_format():
     """Verify S_t format matches R^(T x d_s)"""

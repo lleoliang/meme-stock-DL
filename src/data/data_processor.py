@@ -7,7 +7,7 @@ import numpy as np
 import yfinance as yf
 from typing import Tuple, Optional
 import os
-from config import Config
+from src.config import Config
 from datetime import datetime, timedelta
 from sklearn.preprocessing import StandardScaler
 import pickle

@@ -18,8 +18,8 @@ from typing import List, Dict, Optional
 import re
 import random
 
-from sentiment_analyzer import SentimentAnalyzer
-from config import Config
+from src.utils.sentiment_analyzer import SentimentAnalyzer
+from src.config import Config
 
 class SeleniumStocktwitsScraper:
     """Use Selenium to scrape Stocktwits - bypasses most blocks"""

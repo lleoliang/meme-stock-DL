@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 import yfinance as yf
 from typing import List, Dict, Optional
 import os
-from config import Config
+from src.config import Config
 import json
 
 # Import enhanced collector

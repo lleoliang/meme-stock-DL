@@ -6,10 +6,10 @@ import pandas as pd
 from datetime import datetime, timedelta
 import os
 
-from models.stream_b import StreamBClassifier
-from data_processor import StreamBDataProcessor
-from backtest import Backtester
-from config import Config
+from src.models.stream_b import StreamBClassifier
+from src.data.data_processor import StreamBDataProcessor
+from src.backtest.backtest import Backtester
+from src.config import Config
 import pickle
 
 def test_backtest_17_tickers():

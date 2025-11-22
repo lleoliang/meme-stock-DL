@@ -13,8 +13,8 @@ import re
 import os
 from bs4 import BeautifulSoup
 
-from config import Config
-from sentiment_analyzer import SentimentAnalyzer
+from src.config import Config
+from src.utils.sentiment_analyzer import SentimentAnalyzer
 
 class StocktwitsScraper:
     """Scrape Stocktwits using their public JSON endpoints"""

@@ -23,7 +23,10 @@ print(f"\nRapidAPI Key: {RAPIDAPI_KEY[:20]}...")
 print(f"API Source: rapidapi\n")
 
 # Test
-from data_collector_enhanced import EnhancedStocktwitsCollector
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from src.data.data_collector_enhanced import EnhancedStocktwitsCollector
 
 try:
     collector = EnhancedStocktwitsCollector()
