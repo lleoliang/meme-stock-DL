@@ -18,7 +18,7 @@ class MemeStockModel(nn.Module):
         T=14,           # Sequence length (window days)
         d_m=5,          # Market features (OHLCV)
         d_s=3,          # Social features (for now, placeholder)
-        d_p=4,          # Parabolic features (a, h, k, mse)
+        d_p=6,          # Parabolic features (a, h, k, mse)
         h=64,           # Hidden dimension
     ):
         super().__init__()
@@ -134,7 +134,7 @@ if __name__ == "__main__":
     T = 14      # 60-day window
     d_m = 5     # OHLCV features
     d_s = 3     # Social features (placeholder)
-    d_p = 4     # Parabolic features
+    d_p = 6     # Parabolic features
     h = 64      # Hidden dimension
     
     # Create model

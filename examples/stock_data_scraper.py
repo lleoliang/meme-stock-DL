@@ -389,7 +389,7 @@ if __name__ == "__main__":
 
     # ================= BEGIN S&P 500 CASE ===================
 
-    universe = load_sp500_tickers(csv_path='sp500_companies.csv')
+    universe = load_sp500_tickers(csv_path='data/samples/sp500_companies.csv')
     top_n_tickers = get_top_gainers(tickers=universe, days=DAYS, end_date=END_DATE, top_n=TOP_N)
     
     samples = []
@@ -399,7 +399,7 @@ if __name__ == "__main__":
         samples.append(sample)
     
     for sample in samples:
-        path = save_sample(sample, f"exported_samples_{END_DATE}")
+        path = save_sample(sample, f"data/samples/exported_samples_{END_DATE}")
         print(f"Saved {sample.ticker} -> {path}")
 
      # ================= END S&P 500 CASE ===================
